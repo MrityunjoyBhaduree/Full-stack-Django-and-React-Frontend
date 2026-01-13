@@ -1,8 +1,8 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
+import { BASE_URL } from "../config/api";
 
 
-const baseURL = "http://localhost:8000/api/v1";
 
 function useUserActions() {
     const navigate = useNavigate();
@@ -17,7 +17,7 @@ function useUserActions() {
 
     // Login the user
     function login(data) {
-        return axios.post(`${baseURL}/users/login/`, data).then((res) => {
+        return axios.post(`${BASE_URL}/users/login/`, data).then((res) => {
             // Registering the account and tokens in the store
             setUserData(res.data);
             navigate("/");
@@ -26,7 +26,7 @@ function useUserActions() {
 
     // Register the user
     function register(data) {
-            return axios.post(`${baseURL}/users/register/`, data).then((res) => {
+            return axios.post(`${BASE_URL}/users/register/`, data).then((res) => {
             // Registering the account and tokens in the store
             setUserData(res.data);
             navigate("/");
