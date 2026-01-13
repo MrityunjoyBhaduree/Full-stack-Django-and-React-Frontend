@@ -4,10 +4,12 @@ import { Button, Modal, Form } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import Toaster from "../Toaster";
+import { API_VERSION } from "../../config/api";
 
 
 
-function CreatePost() {
+function CreatePost(props) {
+    const { refresh } = props;
     const [show, setShow] = useState(false);
     const [showToast, setShowToast] = useState(false);
     const [toastMessage, setToastMessage] = useState("");
@@ -35,13 +37,14 @@ function CreatePost() {
         };
 
         axiosService
-        .post("/api/v1/post/", data)
+        .post(`${API_VERSION}/post/`, data)
         .then(() => {
             handleClose();
             setToastMessage("Post created 🚀");
             setToastType("success");
             setForm({});
             setShowToast(true);
+            refresh();
         })
         .catch((error) => {
             setToastMessage("An error occurred.");

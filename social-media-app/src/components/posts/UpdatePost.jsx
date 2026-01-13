@@ -1,0 +1,103 @@
+import React, { use, useContext, useState } from "react";
+import { Button, Modal, Form, Dropdown } from "react-bootstrap";
+import axiosService from "../../helpers/axios";
+import Toaster from "../Toaster";
+import { Context } from "../Layout";
+import { API_VERSION } from "../../config/api";
+
+
+
+function UpdatePost(props) {
+    const { post, refresh } = props;
+    const [show, setShow] = useState(false);
+    const [validated, setValidated] = useState(false);
+    const [form, setForm] = useState({
+        body: post.body,
+    });
+
+    const { setToaster } = useContext(Context)
+
+
+
+    const handleClose = () =>setShow(false);
+    const handleShow = () => setShow(true);
+
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        const updatePostForm = event.currentTarget;
+
+        if (updatePostForm.checkValidity() === false) {
+            event.stopPropagation();
+        }
+
+        setValidated(true);
+
+        const data = {
+            body: form.body,
+        };
+
+        axiosService
+        .put(`${API_VERSION}/post/${post.id}/`, data)
+        .then(() => {
+            handleClose();
+            setToaster({
+            type: "success",
+            message: "Post updated 🚀",
+            show: true,
+            title: "Success!",
+            });
+        })
+        .catch(() => {
+            setToaster({
+            type: "danger",
+            message: "An error occurred.",
+            show: true,
+            title: "Post Error",
+            });
+        });
+    }
+
+    // Add form handling logic here.
+    return (
+        <>
+            <Dropdown.Item onClick={handleShow}>
+                Modify
+            </Dropdown.Item>
+
+            <Modal show={show} onHide={handleClose}>
+                {/* Add UI code here */}
+                <Modal.Header closeButton className="border-0">
+                    <Modal.Title>Update Post</Modal.Title>
+                </Modal.Header>
+                <Modal.Body className="border-0">
+                    <Form noValidate validated={validated} onSubmit={handleSubmit}>
+                        <Form.Group className="mb-3">
+                            <Form.Control 
+                                name="body"
+                                value={form.body}
+                                data-testid="post-body-field"
+                                onChange={(e) => setForm({...form, 
+                                    body: e.target.value})}
+                                as="textarea"
+                                rows={3}
+                            />
+                        </Form.Group>
+                    </Form>
+                </Modal.Body>
+                <Modal.Footer>
+                    <Button 
+                        data-testid="update-post-submit"
+                        variant="primary"
+                        onClick={handleSubmit}
+                    >
+                        Modify
+                    </Button>
+                </Modal.Footer>
+            </Modal>
+        </>
+    );
+}
+
+
+export default UpdatePost;
