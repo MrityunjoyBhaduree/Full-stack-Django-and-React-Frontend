@@ -7,6 +7,7 @@ import {
     CommentOutlined,
     LikeOutlined,
     MoreOutlined,
+    ConsoleSqlOutlined,
 } from "@ant-design/icons";
 import { Image, Card, Button, Modal, Form, Dropdown } from "react-bootstrap";
 import Toaster from "../Toaster";
@@ -15,6 +16,7 @@ import axiosService from "../../helpers/axios";
 import { API_VERSION } from "../../config/api";
 import { getUser } from "../../hooks/user.actions";
 import UpdatePost from "./UpdatePost";
+import { Link } from "react-router-dom";
 
 
 
@@ -34,7 +36,7 @@ const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
 
 
 function Post(props) {
-    const {post, refresh } = props;
+    const {post, refresh, isSinglePost } = props;
     const [ShowToast, setShowToast] = useState(false);
 
     const user = getUser();
@@ -76,14 +78,14 @@ function Post(props) {
                     />
                     <div className="d-flex flex-column justify-content-start align-self-center mt-2">
                         <p className="fs-6 m-0">
-                            {post.author.name}
+                            {post.author.username}
                         </p>
                         <p className="fs-6 fw-lighter">
                             <small>{format(post.created)}</small>
                         </p>
                     </div>
                     </div>
-                    {user.name === post.author.name && (
+                    {user.username === post.author.username && (
                         <div>
                             <Dropdown>
                                 <Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
@@ -120,6 +122,17 @@ function Post(props) {
                         <small>{post.likes_count} like</small>
                     </p>
                 </div>
+                {/* For comment count */}
+                {!isSinglePost && (
+                    <p className="ms-1 fs-6">
+                        <small>
+                            <Link to={`/post/${post.id}/`}>
+                                {post.comment_count} comments
+                            </Link>
+                        </small>
+                    </p>
+                )}
+
             </Card.Body>
             <Card.Footer className="d-flex bg-white w-50 justify-content-between border-0">
                 <div className="d-flex flex-row">
@@ -145,20 +158,22 @@ function Post(props) {
                     </p>
                 </div>
                 {/* Add comment icon here */}
-                <div className="d-flex flex-row">
-                    <CommentOutlined 
-                        style={{
-                            width: "24px",
-                            height: "24px",
-                            padding: "2px",
-                            fontSize: "20px",
-                            color: "#C4C4C4",
-                        }}
-                    />
-                    <p className="ms-1 mb-0">
-                        <small>Comment</small>
-                    </p>
-                </div>
+                {!isSinglePost && (
+                    <div className="d-flex flex-row">
+                        <CommentOutlined 
+                            style={{
+                                width: "24px",
+                                height: "24px",
+                                padding: "2px",
+                                fontSize: "20px",
+                                color: "#C4C4C4",
+                            }}
+                        />
+                        <p className="ms-1 mb-0">
+                            <small>Comment</small>
+                        </p>
+                    </div>
+                )}
             </Card.Footer>
         </Card>
         <Toaster

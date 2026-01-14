@@ -1,13 +1,14 @@
 import Navigationbar from "./Navbar";
 import React, { createContext, useMemo, useState } from "react";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Navigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
 import Toaster from "./Toaster";
 
 
 export const Context = createContext("unknown");
 
 function Layout(props) {
+    const navigate = useNavigate();
 
     const [toaster, setToaster] = useState({
         title: "",
@@ -31,8 +32,9 @@ function Layout(props) {
                             fontSize: "24px",
                             marginLeft: "5%",
                             marginTop: "1%",
+                            cursor: "pointer",
                         }}
-                        onClick={() => Navigate(-1)}
+                        onClick={() => navigate(-1)}
                     />
                 )}
                 <div className="container my-2">

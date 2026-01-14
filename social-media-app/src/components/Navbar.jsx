@@ -16,7 +16,7 @@ function Navigationbar() {
         <Navbar bg="primary" variant="dark">
             <Container>
                 <Navbar.Brand className="fw-blod" href="#home">
-                    Postagram
+                    Postly....
                 </Navbar.Brand>
                 <Navbar.Collapse className="justify-content-end">
                     <Nav>
