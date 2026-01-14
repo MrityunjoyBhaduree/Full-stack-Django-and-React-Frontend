@@ -7,6 +7,7 @@ import ProtectedRoute from "./routes/ProtectedRoute";
 import Home from "./pages/Home";
 import Registration from "./pages/Registraion";
 import Login from "./pages/login";
+import SinglePost from "./pages/SinglePost";
 
 
 function App () {
@@ -19,6 +20,12 @@ function App () {
       } />
       <Route path="/users/login/" element={<Login/>} />
       <Route path="/users/register/" element={<Registration />} />
+      <Route path="/post/:postId/" element={
+        <ProtectedRoute>
+          <SinglePost />
+        </ProtectedRoute>
+        }
+      />
     </Routes>
   );
 }
