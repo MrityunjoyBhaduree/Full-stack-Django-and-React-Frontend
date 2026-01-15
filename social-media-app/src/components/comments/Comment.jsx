@@ -67,14 +67,14 @@ function Comment(props) {
                         />
                         <div className="d-flex flex-column justify-content-start align-self-center mt-2">
                                 <p className="fs-6 m-0">
-                                    {comment.author.username}
+                                    {comment.author.name}
                                 </p>
                                 <p className="fs-6 fw-lighter">
                                     <small>{format(comment.created)}</small>
                                 </p>
                             </div>
                     </div>
-                    {user.username === comment.author.username && (
+                    {user.name === comment.author.name && (
                         <div>
                             <Dropdown>
                                 <Dropdown.Toggle as={MoreToggleIcon}>

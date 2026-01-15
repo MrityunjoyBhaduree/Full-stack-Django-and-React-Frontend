@@ -78,14 +78,14 @@ function Post(props) {
                     />
                     <div className="d-flex flex-column justify-content-start align-self-center mt-2">
                         <p className="fs-6 m-0">
-                            {post.author.username}
+                            {post.author.name}
                         </p>
                         <p className="fs-6 fw-lighter">
                             <small>{format(post.created)}</small>
                         </p>
                     </div>
                     </div>
-                    {user.username === post.author.username && (
+                    {user.name === post.author.name && (
                         <div>
                             <Dropdown>
                                 <Dropdown.Toggle as={MoreToggleIcon}></Dropdown.Toggle>
