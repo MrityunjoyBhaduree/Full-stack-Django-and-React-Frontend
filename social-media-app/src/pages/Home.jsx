@@ -8,12 +8,15 @@ import { getUser } from "../hooks/user.actions";
 import CreatePost from "../components/posts/CreatePost";
 import Post from "../components/posts/Post";
 import { API_VERSION } from "../config/api";
+import ProfileCard from "../components/profile/ProfileCard";
 
 
 
 
 function Home () {
     const user = getUser();
+
+    const profiles = useSWR(`${API_VERSION}/user/?limit=5`, fetcher);
 
     const posts = useSWR(`${API_VERSION}/post/`, fetcher, {
         refreshInterval: 10000,
@@ -48,6 +51,17 @@ function Home () {
                                 refresh={posts.mutate}  />
                         ))}
                     </Row>
+                </Col>
+                <Col sm={3} className="border rounded py-4 h-50">
+                    <h4 className="font-weight-bold text-center">
+                        Suggested pepole
+                    </h4>
+                    <div className="d-flex flex-column">
+                        {profiles.data &&
+                            profiles.data.results.map((profile, index) => (
+                                <ProfileCard key={index} user={profile} />
+                        ))}
+                    </div>
                 </Col>
             </Row>        
         </Layout>
