@@ -1,7 +1,7 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { BASE_URL } from "../config/api";
-
+import  axiosService  from "../helpers/axios"
 
 
 function useUserActions() {
@@ -12,6 +12,7 @@ function useUserActions() {
         login,
         register,
         logout,
+        edit,
     };
 
 
@@ -38,6 +39,27 @@ function useUserActions() {
     function logout() {
         localStorage.removeItem("auth");
         navigate("/users/login/");
+    }
+
+    // Edit the user
+    function edit(data, userId) {
+        return axiosService.patch(`${BASE_URL}/user/${userId}/`, 
+            data,
+            {
+            headers: {
+                "Content-Type": "multipart/form-data" // important for file uploads
+            }
+        }
+        ).then((res) => {
+            localStorage.setItem(
+                "auth",
+                JSON.stringify({
+                    access: getAccessToken(),
+                    refresh: getRefreshToken(),
+                    user: res.data
+                })
+            );
+        });
     }
 
 }
