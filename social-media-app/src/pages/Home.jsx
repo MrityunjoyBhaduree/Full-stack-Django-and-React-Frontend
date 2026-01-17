@@ -1,7 +1,6 @@
 import React, { use } from "react";
 import Layout from "../components/Layout";
 import {Row, Col, Image } from "react-bootstrap";
-import { randomAvatar } from "../utils";
 import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
 import { getUser } from "../hooks/user.actions";
@@ -34,7 +33,7 @@ function Home () {
                     <Row className="border rounded align-items-center p-2">
                         <Col className="flex-shrink-1">
                             <Image
-                                src={randomAvatar()}
+                                src={user.avatar}
                                 roundedCircle
                                 width={52}
                                 height={52}
