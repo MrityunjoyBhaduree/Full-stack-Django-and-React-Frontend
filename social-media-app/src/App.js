@@ -8,6 +8,8 @@ import Home from "./pages/Home";
 import Registration from "./pages/Registraion";
 import Login from "./pages/login";
 import SinglePost from "./pages/SinglePost";
+import Profile from "./pages/Profile";
+import EditProfile from "./pages/EditProfile";
 
 
 function App () {
@@ -24,6 +26,22 @@ function App () {
         <ProtectedRoute>
           <SinglePost />
         </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile/:profileId/"
+        element={
+          <ProtectedRoute>
+            <Profile />
+          </ProtectedRoute>
+        }
+      />
+      <Route
+        path="/profile/:profileId/edit/"
+        element={
+          <ProtectedRoute>
+            <EditProfile />
+          </ProtectedRoute>
         }
       />
     </Routes>
