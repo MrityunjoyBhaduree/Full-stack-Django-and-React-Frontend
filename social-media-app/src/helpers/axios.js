@@ -3,7 +3,7 @@ import createAuthRefreshInterceptor from "axios-auth-refresh"
 
 
 const axiosService = axios.create({
-    baseURL: "http://localhost:8000",
+    baseURL: "https://full-stack-django-and-react-backend.onrender.com",
     headers: {
         "Content-Type": "application/json",
     },
@@ -31,7 +31,7 @@ const resfresAuthLogic = async (failedRequest) => {
     JSON.parse(localStorage.getItem("auth"));
     return axios
     .post("/users/refresh/token", null, {
-        baseURL: "http://localhost:8000",
+        baseURL: "https://full-stack-django-and-react-backend.onrender.com",
         headers: {
             Authorization: `Bearrer ${refresh}`,
         },
