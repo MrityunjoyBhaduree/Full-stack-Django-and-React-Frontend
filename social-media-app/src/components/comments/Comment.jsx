@@ -1,10 +1,9 @@
-import React, { useState, useContext } from "react";
+import React, { useContext } from "react";
 import { format } from "timeago.js";
 import { LikeOutlined, LikeFilled } from "@ant-design/icons";
 import { Image, Card, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
-// import UpdateComment from "./UpdateComment";
 import { Context } from "../Layout";
 import MoreToggleIcon from "../MoreToggleIcon";
 import UpdateComment from "../comments/UpdateComment";

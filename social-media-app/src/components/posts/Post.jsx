@@ -7,29 +7,45 @@ import {
     CommentOutlined,
     LikeOutlined,
     MoreOutlined,
-    ConsoleSqlOutlined,
+
 } from "@ant-design/icons";
-import { Image, Card, Button, Modal, Form, Dropdown } from "react-bootstrap";
+import { Image, Card, Dropdown } from "react-bootstrap";
 import Toaster from "../Toaster";
 import axiosService from "../../helpers/axios";
-import { API_VERSION } from "../../config/api";
+
 import { getUser } from "../../hooks/user.actions";
 import UpdatePost from "./UpdatePost";
 import { Link } from "react-router-dom";
 
 
 
+// const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
+//     <a
+//         href="#"
+//         ref={ref}
+//         onClick={(e) => {
+//         e.preventDefault();
+//         onClick(e);
+//         }}
+//     >
+//         <MoreOutlined />
+//     </a>
+// ));
+
 const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
-    <a
-        href="#"
+    <button
+        type="button"
         ref={ref}
-        onClick={(e) => {
-        e.preventDefault();
-        onClick(e);
+        onClick={onClick}
+        style={{ 
+            background: 'none', 
+            border: 'none', 
+            padding: 0, 
+            cursor: 'pointer' 
         }}
     >
         <MoreOutlined />
-    </a>
+    </button>
 ));
 
 

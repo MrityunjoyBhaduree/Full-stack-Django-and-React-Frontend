@@ -1,7 +1,7 @@
 import Navigationbar from "./Navbar";
 import React, { createContext, useMemo, useState } from "react";
 import { ArrowLeftOutlined } from "@ant-design/icons";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import Toaster from "./Toaster";
 
 

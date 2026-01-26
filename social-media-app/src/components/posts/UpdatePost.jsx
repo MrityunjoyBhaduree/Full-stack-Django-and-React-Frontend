@@ -1,7 +1,7 @@
-import React, { use, useContext, useState } from "react";
+import React, { useContext, useState } from "react";
 import { Button, Modal, Form, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
-import Toaster from "../Toaster";
+
 import { Context } from "../Layout";
 
 
@@ -9,7 +9,7 @@ import { Context } from "../Layout";
 
 function UpdatePost(props) {
     const API_VERSION = process.env.REACT_APP_API_VERSION;
-    const { post, refresh } = props;
+    const { post } = props;
     const [show, setShow] = useState(false);
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({

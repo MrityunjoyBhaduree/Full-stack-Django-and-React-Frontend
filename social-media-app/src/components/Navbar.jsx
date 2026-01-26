@@ -6,8 +6,7 @@ import { getUser, useUserActions } from "../hooks/user.actions";
 
 
 function Navigationbar() {
-    const userActions = useUserActions();
-
+    
     const user = getUser();
 
     const navigate = useNavigate();

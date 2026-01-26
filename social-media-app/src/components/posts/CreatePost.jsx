@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Toast, ToastContainer, ToastHeader } from "react-bootstrap";
+
 import { Button, Modal, Form } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
@@ -17,8 +17,7 @@ function CreatePost(props) {
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({});
 
-    const user = getUser()
-
+    
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
