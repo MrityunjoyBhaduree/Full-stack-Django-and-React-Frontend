@@ -3,11 +3,12 @@ import { Button, Modal, Form, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { Context } from "../Layout";
 import { useAsyncError } from "react-router-dom";
-import { API_VERSION } from "../../config/api";
+
 
 
 
 function UpdateComment(props) {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const { postId, comment, refresh } = props;
     const [show, setShow] = useState(false)
     const [validated, setValidated] = useState(false);

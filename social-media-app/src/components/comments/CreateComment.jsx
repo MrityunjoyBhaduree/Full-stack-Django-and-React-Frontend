@@ -3,11 +3,11 @@ import { Button, Form, Image } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import { Context } from "../Layout";
-import { API_VERSION } from "../../config/api";
 
 
 
 function CreateComment(props) {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const { postId, refresh } = props;
     const [validated, setValidated] = useState(false);
     const [form, setForm] = useState({});

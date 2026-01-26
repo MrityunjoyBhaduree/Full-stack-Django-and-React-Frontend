@@ -4,11 +4,11 @@ import { Button, Modal, Form } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import { getUser } from "../../hooks/user.actions";
 import Toaster from "../Toaster";
-import { API_VERSION } from "../../config/api";
 
 
 
 function CreatePost(props) {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const { refresh } = props;
     const [show, setShow] = useState(false);
     const [showToast, setShowToast] = useState(false);

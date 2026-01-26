@@ -3,11 +3,12 @@ import { Button, Modal, Form, Dropdown } from "react-bootstrap";
 import axiosService from "../../helpers/axios";
 import Toaster from "../Toaster";
 import { Context } from "../Layout";
-import { API_VERSION } from "../../config/api";
+
 
 
 
 function UpdatePost(props) {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const { post, refresh } = props;
     const [show, setShow] = useState(false);
     const [validated, setValidated] = useState(false);

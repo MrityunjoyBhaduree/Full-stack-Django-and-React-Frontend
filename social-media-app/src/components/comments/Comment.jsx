@@ -7,12 +7,12 @@ import { getUser } from "../../hooks/user.actions";
 // import UpdateComment from "./UpdateComment";
 import { Context } from "../Layout";
 import MoreToggleIcon from "../MoreToggleIcon";
-import { API_VERSION } from "../../config/api";
 import UpdateComment from "../comments/UpdateComment";
 
 
 
 function Comment(props) {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const { postId, comment, refresh } = props;
     const { setToaster } = useContext(Context);
 

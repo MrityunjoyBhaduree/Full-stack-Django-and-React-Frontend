@@ -1,11 +1,12 @@
 import React from "react";
 import { Card, Button, Image } from "react-bootstrap";
 import { useNavigate } from "react-router-dom";
-import { API_VERSION } from "../../config/api";
+
 
 
 
 function ProfileCard(props) {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const navigate = useNavigate();
     const { user } = props;
 

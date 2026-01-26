@@ -35,6 +35,7 @@ const MoreToggleIcon = React.forwardRef(({ onClick }, ref) => (
 
 
 function Post(props) {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const {post, refresh, isSinglePost } = props;
     const [ShowToast, setShowToast] = useState(false);
 
