@@ -1,4 +1,4 @@
-import axios, { mergeConfig } from "axios"
+import axios from "axios"
 import createAuthRefreshInterceptor from "axios-auth-refresh"
 
 

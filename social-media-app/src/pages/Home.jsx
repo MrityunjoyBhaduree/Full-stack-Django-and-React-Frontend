@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import Layout from "../components/Layout";
 import {Row, Col, Image } from "react-bootstrap";
 import useSWR from "swr";
