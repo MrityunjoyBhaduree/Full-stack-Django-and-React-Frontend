@@ -6,11 +6,11 @@ import useSWR from "swr";
 import { fetcher } from "../helpers/axios";
 import Post from "../components/posts/Post";
 import { Row, Col } from "react-bootstrap";
-import { API_VERSION } from "../config/api";
 
 
 
 function Profile() {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const { profileId } = useParams();
 
     const user = useSWR(`${API_VERSION}/user/${profileId}/`, fetcher)

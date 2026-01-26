@@ -7,11 +7,11 @@ import { fetcher } from "../helpers/axios";
 import Post from "../components/posts/Post";
 import CreateComment from "../components/comments/CreateComment";
 import Comment from "../components/comments/Comment";
-import { API_VERSION } from "../config/api";
 
 
 
 function SinglePost() {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     let { postId } = useParams();
 
     const post = useSWR(`${API_VERSION}/post/${postId}/`, fetcher)

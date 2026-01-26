@@ -6,13 +6,13 @@ import { fetcher } from "../helpers/axios";
 import { getUser } from "../hooks/user.actions";
 import CreatePost from "../components/posts/CreatePost";
 import Post from "../components/posts/Post";
-import { API_VERSION } from "../config/api";
 import ProfileCard from "../components/profile/ProfileCard";
 
 
 
 
 function Home () {
+    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const user = getUser();
 
     const profiles = useSWR(`${API_VERSION}/user/?limit=5`, fetcher);
