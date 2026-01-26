@@ -6,7 +6,6 @@ import { useNavigate } from "react-router-dom";
 
 
 function ProfileCard(props) {
-    const API_VERSION = process.env.REACT_APP_API_VERSION;
     const navigate = useNavigate();
     const { user } = props;
 
