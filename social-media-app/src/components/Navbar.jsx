@@ -1,7 +1,7 @@
 import React from "react";
 import { Navbar, Container, Image, NavDropdown, Nav } from "react-bootstrap";
 import { useNavigate, Link } from "react-router-dom";
-import { getUser, useUserActions } from "../hooks/user.actions";
+import { getUser } from "../hooks/user.actions";
 
 
 
