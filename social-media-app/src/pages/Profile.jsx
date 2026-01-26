@@ -1,4 +1,4 @@
-import React, { use } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import Layout from "../components/Layout";
 import ProfileDetails from "../components/profile/ProfileDetails";
