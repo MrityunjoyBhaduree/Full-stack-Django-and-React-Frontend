@@ -1,10 +1,10 @@
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-import { BASE_URL } from "../config/api";
 import  axiosService  from "../helpers/axios"
 
 
 function useUserActions() {
+    const BASE_URL = process.env.REACT_APP_BASE_URL;
     const navigate = useNavigate();
 
 
